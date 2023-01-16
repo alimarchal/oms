@@ -111,13 +111,14 @@
                                 <p>Users</p>
                             </a>
                         </li>
-
+                        @if(auth()->user()->roles->pluck("name")->first() == "Super-Admin")
                         <li class="nav-item">
                             <a href="{{route('users.userProfile')}}" class="nav-link  @if(request()->routeIs('users.userProfile')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User Profile</p>
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </li>
                 {{--                    menu-open               --}}
