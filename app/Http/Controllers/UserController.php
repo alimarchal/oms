@@ -98,11 +98,20 @@ class UserController extends Controller
             'password' => 'required',
             'role' => 'required',
         ]);
+
+//        dd($request->all());
+
         $role = Role::where('name', $request->role)->first();
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'type' => $request->role,
+            'registration_no' => $request->registration_no,
+            'mobile' => $request->mobile,
+            'program' => $request->program,
+            'course_work_completion' => $request->course_work_completion,
+            'supervisor_id' => $request->supervisor_id,
         ]);
         $user->assignRole($role);
         Artisan::call('permission:cache-reset');

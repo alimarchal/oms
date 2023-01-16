@@ -28,6 +28,11 @@ class StudentSynopsisThesis extends Model
 
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class,'student_synopsis_thesis_id');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 }

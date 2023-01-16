@@ -25,4 +25,12 @@
     <link rel="stylesheet" href="{{url('AdminLTE-3.2.0/plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{url('AdminLTE-3.2.0/plugins/summernote/summernote-bs4.min.css')}}">
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>
+        tinymce.init({
+            selector: '#mytextarea'
+        });
+    </script>
 </head>

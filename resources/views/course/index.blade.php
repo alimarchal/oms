@@ -33,7 +33,11 @@
                    <th scope="col">Course Name</th>
                    <th scope="col">Course Code</th>
                    <th scope="col">Program</th>
-                   <th scope="col">Course Registration</th>
+
+                   @if(auth()->user()->roles->pluck("name")->first() == "Student")
+                       <th scope="col">Course Registration</th>
+                   @endif
+
                </tr>
                </thead>
                <tbody>
@@ -47,6 +51,8 @@
                        <td>
                            {{ $customer->program }}
                        </td>
+
+                       @if(auth()->user()->roles->pluck("name")->first() == "Student")
                        <td class="text-center">
 
                            @php $check = \App\Models\CourseRegistration::where('user_id', auth()->id())->where('course_id', $customer->id)->get(); @endphp
@@ -62,6 +68,8 @@
                            @endif
 
                        </td>
+
+                           @endif
                    </tr>
                @endforeach
                </tbody>

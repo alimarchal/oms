@@ -3,7 +3,7 @@
     User Management
 @endsection
 @section('page_main_name')
-    Create User
+    Create New User
 @endsection
 @section('page_name')
     User Management / Create User
@@ -36,6 +36,62 @@
                 <option value="Super-Admin">Super-Admin</option>
             </select>
         </div>
+
+
+
+        <div class="col-md-3 mb-2">
+            <label for="registration_no"><strong>Registration No</strong></label>
+            <input type="text" id="registration_no" class="form-control" name="registration_no" required>
+        </div>
+
+        <div class="col-md-3 mb-2">
+            <label for="mobile"><strong>Mobile</strong></label>
+            <input type="text" id="mobile" class="form-control" name="mobile" required>
+        </div>
+
+
+        <div class="col-md-3 mb-2">
+            <label for="program"><strong> Program</strong></label>
+            <select name="program" class="form-control" id="program">
+                <option value="PhD (CS)">PhD (CS)</option>
+                <option value="MS (CS)" >MS (CS)</option>
+                <option value="MS (SE)" >MS (SE)</option>
+                <option value="MS (IS)" >MS (IS)</option>
+                <option value="BS (CS)" >BS (CS)</option>
+                <option value="BS (SE)" >BS (SE)</option>
+
+            </select>
+        </div>
+
+
+        <div class="col-md-3 mb-2">
+            <label for="course_work_completion"><strong>Course Work Completion</strong></label>
+            <select class="form-control" name="course_work_completion" id="course_work_completion">
+                <option value="">None</option>
+                <option value="SPRING 2021">SPRING 2021</option>
+                <option value="FALL 2021" >FALL 2021</option>
+                <option value="SPRING 2022" >SPRING 2022</option>
+                <option value="FALL 2022" >FALL 2022</option>
+                <option value="FALL 2022_2" >FALL 2022_2</option>
+            </select>
+        </div>
+
+
+
+        <div class="col-md-3 mb-2">
+            <label for="supervisor_id"><strong>Supervisor</strong></label>
+            <select class="form-control" name="supervisor_id" id="supervisor_id">
+                <option value="">None</option>
+                @foreach(\App\Models\Supervisor::all() as $item)
+                    <option value="{{$item->id}}">{{$item->name}}</option>
+                @endforeach
+
+            </select>
+        </div>
+
+        <div class="col-md-9 mb-2">
+        </div>
+
         <button class="btn btn-danger" type="submit">Create User</button>
     </form>
 @endsection

@@ -48,9 +48,16 @@
                     <tr>
                         <td scope="row"><strong>{{$loop->iteration}}</strong></td>
                         <td>
-                            <a href="#">
-                                {{$rs->name}}
+                            @if(!empty($rs->synopsisThesis))
+                            <a href="{{route('thesisSynopsisStatus',$rs->synopsisThesis->id)}}">
+                                    {{$rs->name}}
                             </a>
+                            @else
+                                <a href="#">
+                                    {{$rs->name}}
+                                </a>
+                            @endif
+
                         </td>
                         <td>
                             {{ $rs->email }}
@@ -61,14 +68,14 @@
                         <td>
                             <strong>
                                 <span>
-                                <a class="text-danger" href="{{\Illuminate\Support\Facades\Storage::url($rs->synopsisThesis->synopsis_file)}}">{{$rs->course_work_completion}}-{{$rs->program}}_Synopsis.pdf</a>
+                                <a class="text-danger" target="_blank" href="{{\Illuminate\Support\Facades\Storage::url($rs->synopsisThesis->synopsis_file)}}">{{$rs->course_work_completion}}-{{$rs->program}}_Synopsis.pdf</a>
                             </span>
                             </strong>
                         </td>
                         <td>
                             <strong>
                                 <span>
-                                <a class="text-danger" href="{{\Illuminate\Support\Facades\Storage::url($rs->synopsisThesis->thesis_document)}}">{{$rs->course_work_completion}}-{{$rs->program}}_Thesis.pdf</a>
+                                <a class="text-danger" target="_blank" href="{{\Illuminate\Support\Facades\Storage::url($rs->synopsisThesis->thesis_document)}}">{{$rs->course_work_completion}}-{{$rs->program}}_Thesis.pdf</a>
                             </span>
                             </strong>
                         </td>

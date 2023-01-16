@@ -12,14 +12,29 @@
 @section('body')
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a href="{{route('studentSynopsisThesis.index')}}" class="nav-link @if(request()->routeIs('studentSynopsisThesis.*')) active @endif ">
-                Thesis / Synopsis Submission
-            </a>
+
+            @if(!empty(auth()->user()->synopsisThesis))
+                <a href="{{route('studentSynopsisThesis.show', auth()->user()->synopsisThesis->id)}}" class="nav-link @if(request()->routeIs('studentSynopsisThesis.*')) active @endif ">
+                    Thesis / Synopsis Submission
+                </a>
+            @else
+                <a href="{{route('studentSynopsisThesis.show', auth()->user()->id)}}" class="nav-link @if(request()->routeIs('studentSynopsisThesis.*')) active @endif ">
+                    Thesis / Synopsis Submission
+                </a>
+            @endif
+
         </li>
 
-        <li class="nav-item">
-            <a href="javascript: void(0)" class="nav-link @if(request()->routeIs('guarantee.*')) active @endif  ">Thesis Status / Comments</a>
-        </li>
+        @if(!empty(auth()->user()->synopsisThesis))
+            <li class="nav-item">
+                <a href="{{route('thesisSynopsisStatus', auth()->user()->synopsisThesis->id)}}" class="nav-link @if(request()->routeIs('guarantee.*')) active @endif  ">Thesis Status / Comments</a>
+            </li>
+        @else
+            <li class="nav-item">
+                <a href="#" class="nav-link @if(request()->routeIs('guarantee.*')) active @endif  ">Thesis Status / Comments</a>
+            </li>
+        @endif
+
 
 
     </ul>

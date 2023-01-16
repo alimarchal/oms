@@ -72,7 +72,7 @@
                     </td>
                     <td>{{$customer->email}}</td>
                     <td>
-{{--                        {{ $customer->roles->pluck('name')[0] }}--}}
+                        {{$customer->roles->pluck("name")->first()}}
                     </td>
                     <td class="text-center">
 {{--                        <a href="{{route('users.edit', $users->id)}}">--}}

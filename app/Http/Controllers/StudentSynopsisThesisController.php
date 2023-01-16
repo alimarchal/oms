@@ -15,6 +15,8 @@ class StudentSynopsisThesisController extends Controller
     {
         $thesis = StudentSynopsisThesis::find($id);
 
+
+
         return view('thesis.comments',compact('thesis'));
     }
 

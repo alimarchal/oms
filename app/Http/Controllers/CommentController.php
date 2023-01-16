@@ -36,7 +36,13 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        //
+
+        $request->merge(['supervisor_id' => auth()->user()->id]);
+//        dd($request->all());
+        $course_registration = Comment::create($request->all());
+
+        session()->flash('message', 'You have successfully commented...');
+        return to_route('thesisSynopsisStatus',1);
     }
 
     /**

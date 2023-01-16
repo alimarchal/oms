@@ -13,9 +13,8 @@ class SupervisorController extends Controller
 
     public function viewRegisterStudentDetail(Request $request)
     {
-        $register_students = User::where('supervisor_id',3)->get();
-//        $register_students = User::where('supervisor_id',auth()->user()->id)->get();
-
+//        $register_students = User::where('supervisor_id',3)->get();
+        $register_students = User::where('supervisor_id',auth()->user()->id)->get();
         return view('superVisor.viewRegisterStudentDetail',compact('register_students'));
     }
 

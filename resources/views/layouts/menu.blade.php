@@ -21,14 +21,16 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{route('studentSynopsisThesis.show',auth()->user()->id)}}" class="nav-link @if(request()->routeIs('studentSynopsisThesis.index')) active  @endif">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Thesis Submission
-                        </p>
-                    </a>
-                </li>
+
+                @if(auth()->user()->roles->pluck("name")->first() == "Student")
+                    <li class="nav-item">
+                        <a href="{{route('studentSynopsisThesis.show',auth()->user()->id)}}" class="nav-link @if(request()->routeIs('studentSynopsisThesis.show',auth()->user()->id)) active  @endif">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Thesis Submission
+                            </p>
+                        </a>
+                    </li>
 
                 <li class="nav-item">
                     <a href="{{route('viewSupervisor')}}" class="nav-link @if(request()->routeIs('viewSupervisor')) active  @endif">
@@ -39,8 +41,29 @@
                     </a>
                 </li>
 
-                <li class="nav-item @if(request()->routeIs('course.*')) menu-open  @endif ">
-                    <a href="#" class="nav-link @if(request()->routeIs('course.*')) active  @endif">
+
+                <li class="nav-item">
+                    <a href="{{route('course.viewRegisterCourses')}}" class="nav-link @if(request()->routeIs('course.viewRegisterCourses')) active @endif">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>View Register Courses</p>
+                    </a>
+                </li>
+                @endif
+                <li class="nav-item">
+                    <a href="{{route('viewRegisterStudentDetail')}}" class="nav-link @if(request()->routeIs('viewRegisterStudentDetail')) active  @endif">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            View Registered Student
+                        </p>
+                    </a>
+                </li>
+
+
+
+{{--                 @if(request()->routeIs('course.*')) menu-open  @endif              --}}
+{{--                @if(request()->routeIs('course.*')) active  @endif                  --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Course Creations
@@ -61,14 +84,12 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="{{route('course.viewRegisterCourses')}}" class="nav-link @if(request()->routeIs('course.viewRegisterCourses')) active @endif">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>View Register Courses</p>
-                            </a>
-                        </li>
+
                     </ul>
                 </li>
+
+
+
                 <li class="nav-item @if(request()->routeIs('users.*')) menu-open  @endif ">
                     <a href="#" class="nav-link @if(request()->routeIs('users.*')) active  @endif">
                         <i class="nav-icon fas fa-user"></i>
