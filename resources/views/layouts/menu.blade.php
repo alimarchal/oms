@@ -49,6 +49,7 @@
                     </a>
                 </li>
                 @endif
+                @if(auth()->user()->roles->pluck("name")->first() == "Supervisor")
                 <li class="nav-item">
                     <a href="{{route('viewRegisterStudentDetail')}}" class="nav-link @if(request()->routeIs('viewRegisterStudentDetail')) active  @endif">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -57,6 +58,7 @@
                         </p>
                     </a>
                 </li>
+                @endif
 
 
 
@@ -71,12 +73,17 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+
+
+                        @if(auth()->user()->roles->pluck("name")->first() == "Supervisor")
                         <li class="nav-item">
                             <a href="{{route('course.create')}}" class="nav-link  @if(request()->routeIs('course.create')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Create New Course</p>
                             </a>
                         </li>
+
+                        @endif
                         <li class="nav-item">
                             <a href="{{route('course.index')}}" class="nav-link  @if(request()->routeIs('course.index')) active @endif">
                                 <i class="far fa-circle nav-icon"></i>
@@ -89,7 +96,7 @@
                 </li>
 
 
-
+                @if(auth()->user()->roles->pluck("name")->first() == "Supervisor")
                 <li class="nav-item @if(request()->routeIs('users.*')) menu-open  @endif ">
                     <a href="#" class="nav-link @if(request()->routeIs('users.*')) active  @endif">
                         <i class="nav-icon fas fa-user"></i>
@@ -121,6 +128,7 @@
                         @endif
                     </ul>
                 </li>
+                @endif
                 {{--                    menu-open               --}}
             </ul>
         </nav>
