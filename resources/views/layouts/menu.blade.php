@@ -65,16 +65,15 @@
                 {{--                 @if(request()->routeIs('course.*')) menu-open  @endif              --}}
                 {{--                @if(request()->routeIs('course.*')) active  @endif                  --}}
                 @if(auth()->user()->roles->pluck("name")->first() == "Supervisor")
-                <li class="nav-item">
-                    <a href="#" class="nav-link ">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Course Creations
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-
+                    <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                Course Creations
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
 
 
                             <li class="nav-item">
@@ -85,11 +84,8 @@
                             </li>
 
 
-
-
-
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
                 @endif
                 @if(auth()->user()->roles->pluck("name")->first() == "Student")
                     <li class="nav-item">
@@ -152,6 +148,14 @@
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
                                 Manage Schedule
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('generateEvaluationReport')}}" class="nav-link @if(request()->routeIs('generateEvaluationReport')) active  @endif">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Evaluation Report
                             </p>
                         </a>
                     </li>

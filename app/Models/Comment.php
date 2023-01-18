@@ -16,4 +16,9 @@ class Comment extends Model
     {
         return $this->belongsTo(StudentSynopsisThesis::class,'student_synopsis_thesis_id');
     }
+
+    public function supervisor(): BelongsTo
+    {
+        return $this->belongsTo(Supervisor::class,'supervisor_id');
+    }
 }

@@ -41,6 +41,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('viewThesisSynopsis', [\App\Http\Controllers\SupervisorController::class, 'viewThesisSynopsis'])->name('viewThesisSynopsis');
     Route::get('manageSchedule', [\App\Http\Controllers\SupervisorController::class, 'manageSchedule'])->name('manageSchedule');
     Route::post('manageSchedule', [\App\Http\Controllers\SupervisorController::class, 'manageScheduleUpdate'])->name('manageScheduleUpdate');
+    Route::get('generateEvaluationReport', [\App\Http\Controllers\SupervisorController::class, 'generateEvaluationReport'])->name('generateEvaluationReport');
+    Route::get('generateEvaluationReportThesisId/{thesisId}', [\App\Http\Controllers\SupervisorController::class, 'generateEvaluationReportThesisId'])->name('generateEvaluationReportThesisId');
 });
 
 

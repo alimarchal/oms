@@ -157,7 +157,7 @@
                         <td>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" id="radio1" name="recommendation"
-                                       value="The candidate is recommended to do minor changings. A candidate has to re-submit manuscript (e.g. within 4 weeks for PhD student and 1 week for MS Student)." checked>
+                                       value="Minor Changings" checked>
                             </div>
                         </td>
                     </tr>
@@ -168,7 +168,7 @@
                         <td>
 
                             <div class="form-check">
-                                <input type="radio" class="form-check-input" id="radio1" name="recommendation" value="The candidate is recommended to do major changing. Candidate has to appear in next semester.">
+                                <input type="radio" class="form-check-input" id="radio1" name="recommendation" value="Major Changings">
                             </div>
                         </td>
                     </tr>
@@ -179,7 +179,7 @@
                         <td>
                             <div class="form-check">
                                 <input type="radio" class="form-check-input" id="radio1" name="recommendation"
-                                       value="The candidate is not allowed to resubmit the same manuscript for reexamination. Candidate has to appear in next semester with different idea.">
+                                       value="Not Allowed">
                             </div>
                         </td>
                     </tr>
