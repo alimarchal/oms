@@ -109,7 +109,7 @@
                         @foreach($thesis->comments as $cmnt)
                             <div class="card mb-4">
                                 <div class="card-body">
-                                    <strong>Comment:</strong> {!! $cmnt->comments !!}
+                                    <strong>Comment:</strong> {!! $cmnt->comments !!}<br>
                                     <strong>Recommendation:</strong> {!! $cmnt->recommendation !!}
                                     <br>
                                     <strong>Required Again:</strong>
@@ -141,7 +141,7 @@
 
 
 
-    @if(auth()->user()->roles->pluck("name")->first() != "Student")
+    @if(auth()->user()->roles->pluck("name")->first() == "Evaluator")
         <form method="post" action="{{route('comment.store')}}" class="row p-2 m-2">
             @csrf
 

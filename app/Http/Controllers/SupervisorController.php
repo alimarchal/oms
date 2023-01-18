@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSupervisorRequest;
 use App\Http\Requests\UpdateSupervisorRequest;
+use App\Models\StudentSynopsisThesis;
 use App\Models\Supervisor;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,6 +17,25 @@ class SupervisorController extends Controller
 //        $register_students = User::where('supervisor_id',3)->get();
         $register_students = User::where('supervisor_id',auth()->user()->id)->get();
         return view('superVisor.viewRegisterStudentDetail',compact('register_students'));
+    }
+
+    public function viewThesisSynopsis(Request $request)
+    {
+        $register_students = User::where('type','Student')->get();
+        return view('Evaluator.viewRegisterStudentDetail',compact('register_students'));
+    }
+
+    public function manageSchedule(Request $request)
+    {
+        $register_students = User::where('type','Student')->get();
+        return view('Evaluator.manageSchedule',compact('register_students'));
+    }
+
+    public function manageScheduleUpdate(Request $request)
+    {
+        $student_thesis = StudentSynopsisThesis::find($request->id);$student_thesis->update($request->all());
+        session()->flash('message', 'You have set schedule successfully.');
+        return to_route('manageSchedule');
     }
 
     /**

@@ -23,6 +23,7 @@ class StudentSynopsisThesis extends Model
         'synopsis_approval_notification',
         'session',
         'defence_date',
+        'defense_time',
         'submission_status',
     ];
 

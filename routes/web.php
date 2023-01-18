@@ -37,6 +37,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('viewRegisterStudentDetail', [\App\Http\Controllers\SupervisorController::class, 'viewRegisterStudentDetail'])->name('viewRegisterStudentDetail');
 
     Route::resource('comment', \App\Http\Controllers\CommentController::class);
+
+    Route::get('viewThesisSynopsis', [\App\Http\Controllers\SupervisorController::class, 'viewThesisSynopsis'])->name('viewThesisSynopsis');
+    Route::get('manageSchedule', [\App\Http\Controllers\SupervisorController::class, 'manageSchedule'])->name('manageSchedule');
+    Route::post('manageSchedule', [\App\Http\Controllers\SupervisorController::class, 'manageScheduleUpdate'])->name('manageScheduleUpdate');
 });
 
 

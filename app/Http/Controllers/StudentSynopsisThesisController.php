@@ -14,9 +14,6 @@ class StudentSynopsisThesisController extends Controller
     public function thesisSynopsisStatus(\Illuminate\Http\Request $request,$id)
     {
         $thesis = StudentSynopsisThesis::find($id);
-
-
-
         return view('thesis.comments',compact('thesis'));
     }
 
