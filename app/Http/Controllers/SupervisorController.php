@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSupervisorRequest;
 use App\Http\Requests\UpdateSupervisorRequest;
+use App\Models\Incharge;
 use App\Models\StudentSynopsisThesis;
 use App\Models\Supervisor;
 use App\Models\User;
@@ -50,6 +51,29 @@ class SupervisorController extends Controller
     {
         $student_thesis = $thesisId;
         return view('generateEvaluationReport.generateEvaluationReportThesisId', compact('student_thesis'));
+    }
+
+
+    public function sendToIncharge(Request $request)
+    {
+        $check = Incharge::where('student_synopsis_thesis_id', $request->student_synopsis_thesis_id)->get();
+        if ($check->isEmpty()) {
+            $eval_send_report = Incharge::create($request->all());
+            session()->flash('message', 'You have successfully sent report to in-charge.');
+            return to_route('generateEvaluationReportThesisId', $eval_send_report->student_synopsis_thesis_id);
+        } else {
+            session()->flash('message', 'You have already sent report to in-charge.');
+            return to_route('generateEvaluationReportThesisId', $request->student_synopsis_thesis_id);
+        }
+    }
+
+//reportSendByEvaluator
+
+    public function reportSendByEvaluator(Request $request)
+    {
+
+        $reports = Incharge::where('user_id',auth()->user()->id)->get();
+        return view('reportSendByEvaluator.generateEvaluationReport',compact('reports'));
     }
 
     /**

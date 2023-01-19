@@ -160,6 +160,34 @@
                         </a>
                     </li>
                 @endif
+
+
+
+
+                @if(auth()->user()->roles->pluck("name")->first() == "In-charge")
+
+                    <li class="nav-item">
+                        <a href="{{route('viewThesisSynopsis')}}" class="nav-link @if(request()->routeIs('viewThesisSynopsis')) active  @endif">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                View Thesis / Synopsis
+                            </p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a href="{{route('reportSendByEvaluator')}}" class="nav-link @if(request()->routeIs('reportSendByEvaluator')) active  @endif">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Report send By Evaluator
+                            </p>
+                        </a>
+                    </li>
+                @endif
+
+
+
                 {{--                    menu-open               --}}
             </ul>
         </nav>
